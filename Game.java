@@ -8,7 +8,7 @@ NOTE: You don't need to understand the details here, no fiddling neccessary.*/
 import java.awt.*;
 import java.awt.event.*;
 
-//Test
+//Test 2
 abstract class Game extends Canvas {
   protected boolean on = true;
   protected int width, height;
