@@ -1,5 +1,7 @@
 package game;
 
+kjkjkjkj
+
 /*
 CLASS: Game
 DESCRIPTION: A painted canvas in its own window, updated every tenth second.
@@ -9,7 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 //Test
-// hii
+// hii we can just use te online verison of Vscode then
 // https://code.visualstudio.com/docs/java/java-tutorial
 abstract class Game extends Canvas {
   protected boolean on = true;
