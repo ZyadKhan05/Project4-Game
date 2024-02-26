@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 //Test 2
+// hii
 abstract class Game extends Canvas {
   protected boolean on = true;
   protected int width, height;
