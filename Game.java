@@ -10,6 +10,7 @@ import java.awt.event.*;
 
 //Test 2
 // hii
+// https://code.visualstudio.com/docs/java/java-tutorial
 abstract class Game extends Canvas {
   protected boolean on = true;
   protected int width, height;
