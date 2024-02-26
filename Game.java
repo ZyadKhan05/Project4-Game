@@ -12,6 +12,7 @@ import java.awt.event.*;
 
 //Test
 // hii we can just use te online verison of Vscode then
+// yup
 // https://code.visualstudio.com/docs/java/java-tutorial
 abstract class Game extends Canvas {
   protected boolean on = true;
