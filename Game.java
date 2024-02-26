@@ -8,7 +8,7 @@ NOTE: You don't need to understand the details here, no fiddling neccessary.*/
 import java.awt.*;
 import java.awt.event.*;
 
-//Test 2
+//Test
 // hii
 // https://code.visualstudio.com/docs/java/java-tutorial
 abstract class Game extends Canvas {
