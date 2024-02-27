@@ -10,6 +10,7 @@ import java.awt.event.*;
 
 // Follow this: https://code.visualstudio.com/docs/java/java-tutorial
 // Install Git: https://git-scm.com/download/win
+// CLONE the Respository
 // Run the commands off here: https://stackoverflow.com/questions/54876421/make-sure-you-configure-your-user-email-and-user-name-in-git-when-trying-t
 // Commits should work
 abstract class Game extends Canvas {
