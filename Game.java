@@ -8,6 +8,7 @@ NOTE: You don't need to understand the details here, no fiddling neccessary.*/
 import java.awt.*;
 import java.awt.event.*;
 
+//  We will clone the repository and will need to commit & sync to upload the code. 
 // Follow this: https://code.visualstudio.com/docs/java/java-tutorial
 // Install Git: https://git-scm.com/download/win
 // CLONE the Respository
