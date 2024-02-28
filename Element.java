@@ -20,24 +20,18 @@ public class Element extends Polygon {
 	}
 
 	public void paint(Graphics brush) {
+        // Draw a base circle
+        int radius = 50; // Adjust for desired size
+        int centerX = (int) position.getX() + 50; // Adjust offset for center
+        int centerY = (int) position.getY() + 50; // Adjust offset for center
+        brush.setColor(Color.WHITE);
+        brush.fillOval(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
 
-
-		brush.setColor(Color.CYAN); // Set color to blue (for example)
-
-		Point[] points = getPoints();
-
-		int[] xPoints = new int[points.length];
-
-		int[] yPoints = new int[points.length];
-
-		for (int i = 0; i < points.length; i++) {
-			xPoints[i] = (int) points[i].getX();
-			yPoints[i] = (int) points[i].getY();
-		}
-		brush.fillPolygon(xPoints, yPoints, points.length);
-		
-		brush.drawString("Counter is " + counter,10,10);
-		
+        // Draw additional circles to simulate sphere
+        for (int i = 1; i < 4; i++) { // Adjust number of circles for desired effect
+            brush.setColor(new Color(255, 255, 255, 255 - i * 50)); // Adjust transparency for depth effect
+            brush.fillOval(centerX - radius + i * 10, centerY - radius + i * 10, 2 * radius - 2 * i * 10, 2 * radius - 2 * i * 10);
+        }
 	}
 
 	public void move() {
