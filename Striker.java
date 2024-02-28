@@ -17,7 +17,7 @@ public class Striker extends Polygon implements Player {
     this.points = shape;
     this.rotation = rotation;
     this.position = position;
-    image = Toolkit.getDefaultToolkit().getImage("pic.png"); // Replace with your image path
+    image = Toolkit.getDefaultToolkit().getImage("stick-figure-png-.png"); // Replace with your image path
 
     keyListener = new KeyAdapter() {
     @Override
