@@ -23,7 +23,7 @@ public class Striker extends Polygon implements Player{
 
 	public void paint(Graphics brush) {
 
-		brush.drawImage(image, 400, 300, 100, 100, null);	
+		brush.drawImage(image, 200, 300, 100, 100, null);	
 		/*
 		brush.setColor(Color.CYAN); // Set color to blue (for example)
 
