@@ -7,7 +7,6 @@ NOTE: This class is the metaphorical "main method" of your program,
 
 */
 import java.awt.*;
-import java.awt.event.*;
 
 class YourGameName extends Game {
 	static int counter = 0;
