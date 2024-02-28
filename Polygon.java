@@ -1,4 +1,3 @@
-package game;
 
 /*
 CLASS: Polygon
