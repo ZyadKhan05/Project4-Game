@@ -20,4 +20,9 @@ public class Point implements Cloneable {
   public Point clone() {
 	  return new Point(x, y);
   }
+
+public void setLocation(double d, double e) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setLocation'");
+}
 }

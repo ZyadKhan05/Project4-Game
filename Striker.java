@@ -33,9 +33,8 @@ public class Striker extends Polygon implements Player {
   }
 
   @Override
-  public void move() {
-    // Empty implementation, movement handled by key presses
-  }
+  public void move(){}
+    
 
   public void paint(Graphics brush) {
     brush.drawImage(image, (int) position.getX() - image.getWidth(null) / 2, (int) position.getY() - image.getHeight(null) / 2, null);

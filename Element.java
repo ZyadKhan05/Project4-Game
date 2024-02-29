@@ -22,8 +22,10 @@ public class Element extends Polygon {
 	public void paint(Graphics brush) {
         // Draw a base circle
         int radius = 50; // Adjust for desired size
-        int centerX = (int) position.getX() + 50; // Adjust offset for center
-        int centerY = (int) position.getY() + 50; // Adjust offset for center
+		// Adjust offset for center
+        int centerX = (int) position.getX() + 50; 
+		// Adjust offset for center
+        int centerY = (int) position.getY() + 50; 
         brush.setColor(Color.WHITE);
         brush.fillOval(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
 
@@ -33,6 +35,10 @@ public class Element extends Polygon {
             brush.fillOval(centerX - radius + i * 10, centerY - radius + i * 10, 2 * radius - 2 * i * 10, 2 * radius - 2 * i * 10);
         }
 	}
+
+	public void updatePosition(double xChange, double yChange) {
+        this.position.setLocation(this.position.getX() + xChange, this.position.getY() + yChange);
+    }
 
 	public void move() {
 		double amountToMove = this.position.getX();
@@ -49,8 +55,9 @@ public class Element extends Polygon {
 			this.position.setX(10);
 			counter++;
 		}
-
 	}
+
+	
 
 	public void rotate(int degrees) {
 		rotation = (rotation + degrees) % 360;
