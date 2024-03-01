@@ -14,7 +14,7 @@ class YourGameName extends Game {
 
 	Element element;
 	Striker striker;
-	
+	GoalKeeper goalKeeper;
 	public YourGameName() {
 		super("Futbol!", 800, 600);
 		this.setFocusable(true);
@@ -35,7 +35,11 @@ class YourGameName extends Game {
 	  
 		striker = new Striker(elementPoints, elementPosition, elementRotation);
 		striker.addKeyListener(this); 
-	}
+
+
+		// creating the goalkeeper
+		goalKeeper = new GoalKeeper(elementPoints, new Point(700, 300), elementRotation);
+	} 
 
 
   public void paint(Graphics brush) {
@@ -111,14 +115,33 @@ class YourGameName extends Game {
       repaint(); // Call repaint after modifications
     }
 
-    brush.drawLine(600, 150, 800, 150);
-    brush.drawLine(600, 150, 600, 450);
-    brush.drawLine(600, 450, 800, 450);
+    
+	// to draw the lines thick
     brush.setColor(Color.white);
+	Graphics2D g2d = (Graphics2D) brush;
+
+        // Set the thickness of the line
+        int thickness = 5;
+        g2d.setStroke(new BasicStroke(thickness));
+
+        // Draw a line
+		g2d.drawLine(600, 150, 800, 150);
+        g2d.drawLine(600, 150, 600, 450);
+        g2d.drawLine(600, 450, 800, 450);
+
+
 	if (striker != null) {
 		striker.paint(brush);
 	  }
-  }
+  
+
+
+	// for goal keeper
+	goalKeeper.paint(brush);
+	goalKeeper.move();
+  
+	//repaint();
+	}
 
   public void keyPressed(KeyEvent e) {
 	int key = e.getKeyCode();
@@ -133,4 +156,12 @@ class YourGameName extends Game {
     YourGameName a = new YourGameName();
     a.setVisible(true); 
   }
+
+
+
+
+
+
+  
 }
+
