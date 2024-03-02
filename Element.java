@@ -1,8 +1,6 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
 
 public class Element extends Polygon {
 	public Point[] points;
@@ -42,9 +40,6 @@ public class Element extends Polygon {
 
 	public void move() {
 		double amountToMove = this.position.getX();
-		boolean forward = true;
-		boolean left = false;
-		boolean right = false;
 
 		if (amountToMove < 700 && amountToMove >= 0) {
 			this.position.setX(++amountToMove);

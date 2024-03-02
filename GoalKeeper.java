@@ -3,8 +3,7 @@ import java.awt.*;
 
 public class GoalKeeper extends Polygon implements Player{
 
-    static Image image;
-  private final int SPEED = 5; // Adjust speed as needed
+  static Image image;
 
   public Point[] points;
   double rotation;
@@ -21,22 +20,8 @@ public class GoalKeeper extends Polygon implements Player{
 
   @Override
   public void move(){
-    /*
-     * double positionY = this.position.getY();
+      double amountToMove = this.position.getY();
 
-    if(positionY >= 100 && positionY < 450){
-        this.position.setY(++positionY);
-    } 
-    if(this.position.getX() >= 450){
-        this.position.setY(300);
-    }
-     */
-    
-     double amountToMove = this.position.getY();
-     boolean forward = true;
-     boolean left = false;
-     boolean right = false;
- 
      if (amountToMove < 350 && amountToMove >= 200) {
        this.position.setY(++amountToMove);
        //counter++;

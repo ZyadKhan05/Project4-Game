@@ -58,55 +58,41 @@ class Futbol extends Game {
 
 	// Draw rounded corners at goal lines (using arcs)
 	brush.drawArc(560, 260, fieldWidth / 9, fieldWidth / 9 , 90, 180);
-//	brush.drawArc(width - fieldWidth, goalLineY1 - fieldWidth / 18, fieldWidth / 9, fieldWidth / 9, 180, 180);
-	//brush.drawArc(0, goalLineY2 - fieldWidth / 18, fieldWidth / 9, fieldWidth / 9, 0, 180);
-	//brush.drawArc(width - fieldWidth, goalLineY2 - fieldWidth / 18, fieldWidth / 9, fieldWidth / 9, 180, 180);
 
-	// // Draw touchlines
-	 brush.drawLine(width / 10, 0, width / 10, height);
-	 brush.drawLine(width - width / 10, 0, width - width / 10, height);
 
 	// Draw center line
 	 brush.drawLine(fieldWidth / 2, 0, fieldWidth / 2, height);
 
-	// // Draw penalty areas
+	// Draw penalty areas
 	 int penaltyAreaWidth = fieldWidth * 2 / 3;
 	 int penaltyAreaHeight = goalLineY2 - goalLineY1;
-	// brush.drawRect(width / 10, goalLineY1, penaltyAreaWidth, penaltyAreaHeight);
-	// brush.drawRect(width - width / 10 - penaltyAreaWidth, goalLineY1, penaltyAreaWidth, penaltyAreaHeight);
 
-	// // Draw goal lines
-	 brush.drawLine(0, 50, 1000, 50);
-	brush.drawLine(0, 500, 1000, 500);
-
-	// // Draw penalty spots (12 yards from goal line)
+	// Draw penalty spots (12 yards from goal line)
 	 int penaltySpotX = width / 10 + penaltyAreaWidth / 6;
 	 int penaltySpotY = goalLineY1 + penaltyAreaHeight / 2;
-	//brush.fillOval(penaltySpotX - 3, penaltySpotY - 3, 6, 6); // Adjust size as needed
 
 	 brush.fillOval(width - penaltySpotX - 3, penaltySpotY - 3, 6, 6); // Adjust size as needed
 
-	// // Draw center circle
-	 int centerX = fieldWidth / 2;
-	 int centerY = (goalLineY1 + goalLineY2) / 2;
-	 int radius = Math.min(fieldWidth / 5, fieldHeight / 5); // Adjust radius based on field size
-	 brush.drawOval(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
+	// Draw center circle
+	int centerX = fieldWidth / 2;
+	int centerY = (goalLineY1 + goalLineY2) / 2;
+	int radius = Math.min(fieldWidth / 5, fieldHeight / 5); // Adjust radius based on field size
+	brush.drawOval(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
 
 
 	brush.setColor(Color.white); // Set back to white for striker and potential text
 	if (striker != null) {
 		striker.paint(brush);
 	}
-   // brush.setColor(Color.green);
-    //brush.fillRect(0, 0, width, height);
 
-    	// sample code for printing message for debugging
-    	// counter is incremented and this message printed
-    	// each time the canvas is repainted
-    	//counter++;
-    	//brush.setColor(Color.white);
-    	//brush.drawString("Counter is " + counter,10,10);
-    	//brush.draw
+ 	
+   // sample code for printing message for debugging
+   // counter is incremented and this message printed	
+   // each time the canvas is repainted	
+   //counter++;	
+   //brush.setColor(Color.white);
+   //brush.drawString("Counter is " + counter,10,10);
+   //brush.draw
 
     if (element != null) {
       element.paint(brush);
@@ -135,9 +121,7 @@ class Futbol extends Game {
 		striker.paint(brush);
 	  }
   
-
-
-	// for goal keeper
+	// For goal keeper
 	goalKeeper.paint(brush);
 	goalKeeper.move();
   
