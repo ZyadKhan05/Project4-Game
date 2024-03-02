@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class Striker extends Polygon implements Player {
 
   static Image image;
-  private final int SPEED = 5; // Adjust speed as needed
+  private final int SPEED = 7; // Adjust speed as needed
 
   public Point[] points;
   double rotation;
@@ -17,7 +17,7 @@ public class Striker extends Polygon implements Player {
     this.points = shape;
     this.rotation = rotation;
     this.position = position;
-    image = Toolkit.getDefaultToolkit().getImage("pic.png"); // Replace with your image path
+    image = Toolkit.getDefaultToolkit().getImage("striker.png"); // Replace with your image path
 
     keyListener = new KeyAdapter() {
     @Override
