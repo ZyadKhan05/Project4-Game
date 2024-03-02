@@ -1,14 +1,14 @@
 
 import java.awt.*;
 
-public class GoalKeeper extends Polygon implements Player{
+public class GoalKeeper extends Polygon implements Player {
 
   static Image image;
 
   public Point[] points;
   double rotation;
   Point position;
- // private KeyListener keyListener;
+  int score = 0; // Score variable
 
   public GoalKeeper(Point[] shape, Point position, double rotation) {
     super(shape, position, rotation);
@@ -19,26 +19,29 @@ public class GoalKeeper extends Polygon implements Player{
   }
 
   @Override
-  public void move(){
-      double amountToMove = this.position.getY();
+  public void move() {
+    double amountToMove = this.position.getY();
 
-     if (amountToMove < 530 && amountToMove >= 200) {
-       this.position.setY(++amountToMove);
-       //counter++;
-     }
- 
-     if (this.position.getY() >= 530) {
-       this.position.setY(250);
-     //  counter++;
-     }
-   }
-    
+    if (amountToMove < 530 && amountToMove >= 200) {
+      this.position.setY(++amountToMove);
+      // counter++;
+    }
+
+    if (this.position.getY() >= 530) {
+      this.position.setY(250);
+      // counter++;
+    }
+  }
 
   public void paint(Graphics brush) {
-    brush.drawImage(image, (int) position.getX() - image.getWidth(null) / 2, (int) position.getY() - image.getHeight(null) / 2, null);
+    brush.drawImage(image, (int) position.getX() - image.getWidth(null) / 2,
+        (int) position.getY() - image.getHeight(null) / 2, null);
     this.move();
+
+    // Check for goal and update score
+    if (position.getX() > 950) { // Adjust x-coordinate based on field size
+      position.setX(100);
+      score++;
+  }
   }
 }
-
-  
-

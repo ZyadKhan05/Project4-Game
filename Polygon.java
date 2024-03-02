@@ -74,7 +74,13 @@ class Polygon {
 
   //public 
 
-  public void rotate(int degrees) {rotation = (rotation+degrees)%360;}
+  public void rotate(int degrees) {
+    rotation = (rotation + degrees) % 360;
+    if (rotation < 0) {
+        rotation += 20; // Ensure rotation stays within the range [0, 360)
+    }
+}
+
   
   /*
   The following methods are private access restricted because, as this access

@@ -18,20 +18,27 @@ public class Element extends Polygon {
 	}
 
 	public void paint(Graphics brush) {
-        // Draw a base circle
-        int radius = 50; // Adjust for desired size
-		// Adjust offset for center
-        int centerX = (int) position.getX() + 50; 
-		// Adjust offset for center
-        int centerY = (int) position.getY() + 50; 
-        brush.setColor(Color.WHITE);
-        brush.fillOval(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
-
-        // Draw additional circles to simulate sphere
-        for (int i = 1; i < 4; i++) { // Adjust number of circles for desired effect
-            brush.setColor(new Color(255, 255, 255, 255 - i * 50)); // Adjust transparency for depth effect
-            brush.fillOval(centerX - radius + i * 10, centerY - radius + i * 10, 2 * radius - 2 * i * 10, 2 * radius - 2 * i * 10);
-        }
+         // Draw a base white circle
+		 int radius = 50; // Adjust for desired size
+		 int centerX = (int) position.getX() + radius;
+		 int centerY = (int) position.getY() + radius;
+		 brush.setColor(Color.WHITE);
+		 brush.fillOval(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
+ 
+		 // Draw black pentagons
+		 for (int i = 0; i < 5; i++) {
+			 double angle = Math.PI * (2 * i / 5.0) + Math.PI / 2;
+			 int x1 = (int) (centerX + radius * Math.cos(angle));
+			 int y1 = (int) (centerY + radius * Math.sin(angle));
+			 int x2 = (int) (centerX + radius / 3.0 * Math.cos(angle + Math.PI / 5.0));
+			 int y2 = (int) (centerY + radius / 3.0 * Math.sin(angle + Math.PI / 5.0));
+			 int x3 = (int) (centerX + radius / 3.0 * Math.cos(angle - Math.PI / 5.0));
+			 int y3 = (int) (centerY + radius / 3.0 * Math.sin(angle - Math.PI / 5.0));
+			 int[] xPoints = {x1, x2, x3, x1};
+			 int[] yPoints = {y1, y2, y3, y1};
+			 brush.setColor(Color.BLACK);
+			 brush.fillPolygon(xPoints, yPoints, 4);
+		 }
 	}
 
 	public void updatePosition(double xChange, double yChange) {
@@ -41,13 +48,13 @@ public class Element extends Polygon {
 	public void move() {
 		double amountToMove = this.position.getX();
 
-		if (amountToMove < 700 && amountToMove >= 0) {
+		if (amountToMove < 850 && amountToMove >= 0) {
 			this.position.setX(++amountToMove);
 			//counter++;
 		}
 
-		if (this.position.getX() >= 700) {
-			this.position.setX(10);
+		if (this.position.getX() >= 850) {
+			this.position.setX(100);
 			counter++;
 		}
 	}

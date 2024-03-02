@@ -47,7 +47,7 @@ public class Striker extends Polygon implements Player {
   }
 
 public void moveRight() {
-  if (position.getX() < 500) {
+  if (position.getX() < 900) {
     position.setX(position.getX() + SPEED);
   }
 }
