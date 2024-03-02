@@ -16,7 +16,7 @@ class Futbol extends Game {
 	Striker striker;
 	GoalKeeper goalKeeper;
 	public Futbol() {
-		super("Futbol!", 800, 600);
+		super("Futbol!", 1000, 800);
 		this.setFocusable(true);
 		this.requestFocus();
 	  
@@ -28,7 +28,7 @@ class Futbol extends Game {
 			new Point(0, 100)
 		};
 	  
-		Point elementPosition = new Point(400, 300); // Center of the screen
+		Point elementPosition = new Point(150, 400); // Center of the screen
 		double elementRotation = 0; // No rotation initially
 	  
 		element = new Element(elementPoints, elementPosition, elementRotation);
@@ -51,13 +51,12 @@ class Futbol extends Game {
 	brush.setColor(Color.white);
 
 	// Calculate field dimensions based on proportions
-	int fieldWidth = width - 2 * (width / 10); // Subtract margins on each side
+	int fieldWidth = width - 2 * (width / 10);
 	int fieldHeight = height - 2 * (height / 10);
 	int goalLineY1 = height / 3;
 	int goalLineY2 = 2 * height / 3;
 
-	// Draw rounded corners at goal lines (using arcs)
-	brush.drawArc(560, 260, fieldWidth / 9, fieldWidth / 9 , 90, 180);
+	
 
 
 	// Draw center line
@@ -67,7 +66,7 @@ class Futbol extends Game {
 	 int penaltyAreaWidth = fieldWidth * 2 / 3;
 	 int penaltyAreaHeight = goalLineY2 - goalLineY1;
 
-	// Draw penalty spots (12 yards from goal line)
+	// Draw penalty spot
 	 int penaltySpotX = width / 10 + penaltyAreaWidth / 6;
 	 int penaltySpotY = goalLineY1 + penaltyAreaHeight / 2;
 
@@ -106,15 +105,16 @@ class Futbol extends Game {
     brush.setColor(Color.white);
 	Graphics2D g2d = (Graphics2D) brush;
 
-        // Set the thickness of the line
-        int thickness = 5;
-        g2d.setStroke(new BasicStroke(thickness));
+    // Set the thickness of the line
+    int thickness = 5;
+    g2d.setStroke(new BasicStroke(thickness));
 
-        // Draw a line
-		g2d.drawLine(600, 150, 800, 150);
-        g2d.drawLine(600, 150, 600, 450);
-        g2d.drawLine(600, 450, 800, 450);
-		g2d.drawArc(560, 260, fieldWidth / 9, fieldWidth / 9 , 90, 180);
+	
+    // Draw a line
+	g2d.drawLine(800, 250, 1000, 250);
+    g2d.drawLine(800, 250, 800, 550);
+    g2d.drawLine(800, 550, 1000, 550);
+	//brush.drawArc(800, 250, 800, 300, 90, 180);
 
 
 	if (striker != null) {

@@ -41,7 +41,7 @@ public class Striker extends Polygon implements Player {
   }
 
   public void moveLeft() {
-    if (position.getX() > 50) {
+    if (position.getX() > 70) {
       position.setX(position.getX() - SPEED);
     }
   }

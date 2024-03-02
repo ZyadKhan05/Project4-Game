@@ -22,13 +22,13 @@ public class GoalKeeper extends Polygon implements Player{
   public void move(){
       double amountToMove = this.position.getY();
 
-     if (amountToMove < 350 && amountToMove >= 200) {
+     if (amountToMove < 530 && amountToMove >= 200) {
        this.position.setY(++amountToMove);
        //counter++;
      }
  
-     if (this.position.getY() >= 350) {
-       this.position.setY(200);
+     if (this.position.getY() >= 530) {
+       this.position.setY(250);
      //  counter++;
      }
    }
