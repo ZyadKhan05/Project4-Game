@@ -25,22 +25,14 @@ class Futbol extends Game {
 		this.requestFocus();
 
 		// Create element with desired shape, position, and rotation
-		Point[] elementPoints = {
-				new Point(0, 0),
-				new Point(20, 0),
-				new Point(20, 20),
-				new Point(0, 20)
-		};
+		Point[] elementPoints = { new Point(0, 0), new Point(20, 0), 
+				new Point(20, 20), new Point(0, 20) };
 
 		Point elementPosition = new Point(150, 400);
 		double elementRotation = 0;
 
-		Point[] strikerPoints = {
-				new Point(0, 0),
-				new Point(75, 0),
-				new Point(75, 75),
-				new Point(0, 75)
-		};
+		Point[] strikerPoints = { new Point(0, 0), new Point(75, 0), 
+				new Point(75, 75), new Point(0, 75) };
 
 		Point strikerPosition = new Point(100, 400);
 		double strikerRotation = 0;
@@ -51,7 +43,8 @@ class Futbol extends Game {
 		striker.addKeyListener(this);
 
 		// creating the goalkeeper
-		goalKeeper = new GoalKeeper(elementPoints, new Point(875, 300), elementRotation);
+		goalKeeper = new GoalKeeper(elementPoints, new Point(875, 300), 
+				elementRotation);
 	}
 
 	/**
@@ -61,7 +54,7 @@ class Futbol extends Game {
 	 */
 	public void paint(Graphics brush) {
 		// Draw soccer field background
-		brush.setColor(new Color(128, 209, 70)); // Light green color for the field
+		brush.setColor(new Color(128, 209, 70)); 
 		brush.fillRect(0, 0, width, height);
 
 		// Draw field lines
@@ -110,7 +103,6 @@ class Futbol extends Game {
 				element.position.setX(100);
 				striker.position.setX(75);
 			}
-		
 
 			// Check for collision with the goal line (when the striker scores)
 			if (element.position.getX() > 890) {
@@ -156,9 +148,11 @@ class Futbol extends Game {
 		// Draw home and away scores
 		if (element != null && goalKeeper != null) {
 			brush.setColor(Color.BLUE);
-			brush.drawString(String.valueOf(element.score), 200, 30); // Home score on left
+			// Home score on left
+			brush.drawString(String.valueOf(element.score), 200, 30); 
 			brush.setColor(Color.RED);
-			brush.drawString(String.valueOf(goalKeeper.score), width - 200, 30); // Away score on right
+			// Away score on right
+			brush.drawString(String.valueOf(goalKeeper.score), width - 200, 30); 
 		}
 	}
 

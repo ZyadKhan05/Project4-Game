@@ -10,6 +10,10 @@ public class Striker extends Polygon implements Player {
   static Image image;
   private final int SPEED = 7;
 
+  /**
+   * An array of `Point` objects that defines the shape of the element. 
+   * Each `Point` in the array represents a vertex of the polygon shape.
+   */
   public Point[] points;
   double rotation;
   Point position;
