@@ -6,7 +6,6 @@ import java.awt.*;
  * extends Polygon and implements the Player interface.
  */
 public class GoalKeeper extends Polygon implements Player {
-
 	static Image image;
 
 	/**
@@ -42,7 +41,7 @@ public class GoalKeeper extends Polygon implements Player {
             double amountToMove = position.getY();
 
             if (amountToMove < 530 && amountToMove >= 200) {
-                position.setY(++amountToMove);
+                position.setY(amountToMove+20);
                 // counter++;
             }
 
@@ -54,11 +53,6 @@ public class GoalKeeper extends Polygon implements Player {
 
         player.move();
     }
-
-
-
-
-
 	 /*
 	@Override
 	public void move() {
@@ -74,10 +68,7 @@ public class GoalKeeper extends Polygon implements Player {
 			// counter++;
 		}
 	}
-	*/
-
-	
-
+	*/	
 	/**
 	 * Paints the goalkeeper on the screen.
 	 * 
