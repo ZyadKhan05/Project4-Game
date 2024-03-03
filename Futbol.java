@@ -103,7 +103,7 @@ class Futbol extends Game {
 				striker.position.setX(75);
 			}
 			// Check for collision with the goal line (when the striker scores)
-			if (element.position.getX() > 920 && element.position.getY() > 250) {
+			if (element.position.getX() > 900 && element.position.getY() > 250) {
 				// Increment score when the striker scores a goal
 				element.counter++;
 
@@ -139,12 +139,13 @@ class Futbol extends Game {
 
 		// repaint();
 
-		brush.setColor(Color.white);
-		Font font = new Font("Arial", Font.BOLD, 24);
+		Font font = new Font("Arial", Font.BOLD, 28);
 		brush.setFont(font);
 
 		// Draw home and away scores
+		brush.setColor(Color.BLUE);
 		brush.drawString(String.valueOf(element.counter), 200, 30); // Home score on left
+		brush.setColor(Color.RED);
 		brush.drawString(String.valueOf(goalKeeper.score), width - 200, 30); // Away score on righ
 	}
 
@@ -184,27 +185,19 @@ class Futbol extends Game {
 	}
 
 	public boolean goalkeeperCollision(Polygon object1, Polygon object2) {
-		// Get the points of each object
-		Point[] points1 = object1.getPoints();
-		Point[] points2 = object2.getPoints();
-
-		// Loop through each point in the first object
-		for (Point point1 : points1) {
-			// Check if the point is inside the second object
-			if (object2.contains(point1)) {
-				return true; // Collision detected
+			// Get the points of the goalkeeper (object1) and the element (object2)
+			Point[] points1 = goalKeeper.getPoints();
+			Point[] points2 = element.getPoints();
+		
+			// Loop through each point in the element (object2)
+			for (Point point2 : points2) {
+				// Check if the point of the element is inside the goalkeeper
+				if (goalKeeper.getPoints().contains(point2)) {
+					return true; // Collision detected
+				}
 			}
-		}
-
-		// Loop through each point in the second object
-		for (Point point2 : points2) {
-			// Check if the point is inside the first object
-			if (object1.contains(point2)) {
-				return true; // Collision detected
-			}
-		}
-		// No collision detected
-		return false;
+			// No collision detected
+			return false;
 	}
 
 	public static void main(String[] args) {
