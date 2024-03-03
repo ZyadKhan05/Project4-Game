@@ -36,6 +36,30 @@ public class GoalKeeper extends Polygon implements Player {
 	/**
 	 * Moves the goalkeeper vertically on the screen automatically
 	 */
+
+	 public void move() {
+        Player player = () -> {
+            double amountToMove = position.getY();
+
+            if (amountToMove < 530 && amountToMove >= 200) {
+                position.setY(++amountToMove);
+                // counter++;
+            }
+
+            if (position.getY() >= 530) {
+                position.setY(250);
+                // counter++;
+            }
+        };
+
+        player.move();
+    }
+
+
+
+
+
+	 /*
 	@Override
 	public void move() {
 		double amountToMove = this.position.getY();
@@ -50,6 +74,9 @@ public class GoalKeeper extends Polygon implements Player {
 			// counter++;
 		}
 	}
+	*/
+
+	
 
 	/**
 	 * Paints the goalkeeper on the screen.
