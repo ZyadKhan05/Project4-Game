@@ -99,20 +99,21 @@ class Futbol extends Game {
 
 		if (element != null) {
 			element.paint(brush);
-			// Check for collision with striker
 			if (this.playerCollision(striker, element)) {
 				// Move the ball forward
 				element.position.setX(element.position.getX() + 10); // Adjust speed as needed
 				element.rotate(5);
 			}
-			if (this.playerCollision(goalKeeper, element)) {
+			// Check for collision with the goalkeeper
+			if (this.goalkeeperCollision(element, goalKeeper)) {
 				goalKeeper.score++;
 				element.position.setX(100);
 				striker.position.setX(75);
 			}
+		
 
 			// Check for collision with the goal line (when the striker scores)
-			if (element.position.getX() > 880) {
+			if (element.position.getX() > 890) {
 				// Increment score when the striker scores a goal
 				element.score++;
 
@@ -210,12 +211,35 @@ class Futbol extends Game {
 		return false;
 	}
 
+	public boolean goalkeeperCollision(Polygon object1, Polygon object2) {
+		// Get the points of each object
+		Point[] points1 = object1.getPoints();
+		Point[] points2 = object2.getPoints();
+
+		// Loop through each point in the first object
+		for (Point point1 : points1) {
+			// Check if the point is inside the second object
+			if (object2.contains(point1)) {
+				return true; // Collision detected
+			}
+		}
+
+		// Loop through each point in the second object
+		for (Point point2 : points2) {
+			// Check if the point is inside the first object
+			if (object1.contains(point2)) {
+				return true; // Collision detected
+			}
+		}
+		// No collision detected
+		return false;
+	}
 
 	/**
- 	* The main method of the program.
- 	* 
- 	* @param args Command-line arguments (not used).
- 	*/
+	 * The main method of the program.
+	 * 
+	 * @param args Command-line arguments (not used).
+	 */
 	public static void main(String[] args) {
 		Futbol a = new Futbol();
 		a.setVisible(true);

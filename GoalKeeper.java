@@ -43,14 +43,13 @@ public class GoalKeeper extends Polygon implements Player {
     }
   }
 
-    /**
-     * Paints the goalkeeper on the screen.
-     * 
-     * @param brush The Graphics object used for drawing.
-     */
-    public void paint(Graphics brush) {
-      brush.drawImage(image, (int) position.getX() - image.getWidth(null) / 2,
+  /**
+   * Paints the goalkeeper on the screen.
+   * 
+   * @param brush The Graphics object used for drawing.
+   */
+  public void paint(Graphics brush) {
+    brush.drawImage(image, (int) position.getX() - image.getWidth(null) / 2,
         (int) position.getY() - image.getHeight(null) / 2, null);
-      this.move();
-    }
+  }
 }
