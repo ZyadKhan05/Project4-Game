@@ -192,10 +192,11 @@ class Futbol extends Game {
 			// Loop through each point in the element (object2)
 			for (Point point2 : points2) {
 				// Check if the point of the element is inside the goalkeeper
-				if (goalKeeper.getPoints().contains(point2)) {
+				if (goalKeeper.contains(point2)) {
 					return true; // Collision detected
 				}
 			}
+		
 			// No collision detected
 			return false;
 	}
