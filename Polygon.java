@@ -18,7 +18,13 @@ class Polygon {
   private Point[] shape;   // An array of points.
   public Point position;   // The offset mentioned above.
   public double rotation; // Zero degrees is due east.
-  
+    /**
+     * Constructor for the Polygon class.
+     * 
+     * @param inShape The array of points defining the shape of the polygon.
+     * @param inPosition The offset position of the polygon.
+     * @param inRotation The rotation angle of the polygon in degrees.
+     */  
   public Polygon(Point[] inShape, Point inPosition, double inRotation) {
     shape = inShape;
     position = inPosition;
@@ -38,7 +44,11 @@ class Polygon {
     }
   }
   
-  // "getPoints" applies the rotation and offset to the shape of the polygon.
+/**
+     * Returns an array of points representing the current position and rotation of the polygon.
+     * 
+     * @return An array of points representing the current position and rotation of the polygon.
+     */
   public Point[] getPoints() {
     Point center = findCenter();
     Point[] points = new Point[shape.length];
@@ -56,7 +66,12 @@ class Polygon {
     return points;
   }
   
-  // "contains" implements some magical math (i.e. the ray-casting algorithm).
+    /**
+     * Checks if a given point is inside the polygon.
+     * 
+     * @param point The point to check.
+     * @return True if the point is inside the polygon, false otherwise.
+     */
   public boolean contains(Point point) {
     Point[] points = getPoints();
     double crossingNumber = 0;
@@ -72,8 +87,12 @@ class Polygon {
   }
   
 
-  //public 
 
+    /**
+     * Rotates the polygon by the specified angle.
+     * 
+     * @param degrees The angle by which the polygon should be rotated.
+     */
   public void rotate(int degrees) {
     rotation = (rotation + degrees) % 360;
     if (rotation < 0) {

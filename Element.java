@@ -8,8 +8,15 @@ public class Element extends Polygon {
 	Point position;
 	//Graphics brush;
 
-	int counter = 0;
+	int score = 0;
 	
+    /**
+     * Constructor for Element class.
+     * 
+     * @param shape The shape of the element.
+     * @param position The position of the element.
+     * @param rotation The rotation angle of the element.
+     */	
 	public Element(Point[] shape, Point position, double rotation) {
 		super(shape, position, rotation);
 		this.points = shape;
@@ -17,9 +24,14 @@ public class Element extends Polygon {
 		this.position = position;
 	}
 
+	/**
+     * Paints the element on the screen.
+     * 
+     * @param brush The Graphics object used for drawing.
+     */
 	public void paint(Graphics brush) {
          // Draw a base white circle
-		 int radius = 50; // Adjust for desired size
+		 int radius = 30; 
 		 int centerX = (int) position.getX() + radius;
 		 int centerY = (int) position.getY() + radius;
 		 brush.setColor(Color.WHITE);
@@ -41,10 +53,22 @@ public class Element extends Polygon {
 		 }
 	}
 
+    /**
+     * Updates the position of the element.
+     * 
+     * @param xChange The change in the X coordinate.
+     * @param yChange The change in the Y coordinate.
+     */
 	public void updatePosition(double xChange, double yChange) {
         this.position.setLocation(this.position.getX() + xChange, this.position.getY() + yChange);
     }
 
+	/**
+     * Updates the position of the element.
+     * 
+     * @param xChange The change in the X coordinate.
+     * @param yChange The change in the Y coordinate.
+     */
 	public void move() {
 		double amountToMove = this.position.getX();
 
@@ -54,12 +78,16 @@ public class Element extends Polygon {
 		}
 
 		if (this.position.getX() >= 950) {
-			counter++;
+			score++;
 		}
 	}
 
 	
-
+    /**
+     * Rotates the element by the specified angle.
+     * 
+     * @param degrees The angle by which the element should be rotated.
+     */
 	public void rotate(int degrees) {
 		rotation = (rotation + degrees) % 360;
 	}

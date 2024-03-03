@@ -9,6 +9,9 @@ NOTE: This class is the metaphorical "main method" of your program,
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+/**
+ * Constructor for Futbol class. Initializes the game components.
+ */
 class Futbol extends Game {
 	static int counter = 0;
 
@@ -24,9 +27,9 @@ class Futbol extends Game {
 		// Create element with desired shape, position, and rotation
 		Point[] elementPoints = {
 				new Point(0, 0),
-				new Point(100, 0),
-				new Point(100, 100),
-				new Point(0, 100)
+				new Point(20, 0),
+				new Point(20, 20),
+				new Point(0, 20)
 		};
 
 		Point elementPosition = new Point(150, 400);
@@ -34,9 +37,9 @@ class Futbol extends Game {
 
 		Point[] strikerPoints = {
 				new Point(0, 0),
-				new Point(100, 0),
-				new Point(100, 100),
-				new Point(0, 100)
+				new Point(75, 0),
+				new Point(75, 75),
+				new Point(0, 75)
 		};
 
 		Point strikerPosition = new Point(100, 400);
@@ -51,6 +54,11 @@ class Futbol extends Game {
 		goalKeeper = new GoalKeeper(elementPoints, new Point(875, 300), elementRotation);
 	}
 
+	/**
+	 * Paint method for drawing the game components on the screen.
+	 * 
+	 * @param brush The Graphics object used for drawing.
+	 */
 	public void paint(Graphics brush) {
 		// Draw soccer field background
 		brush.setColor(new Color(128, 209, 70)); // Light green color for the field
@@ -92,20 +100,21 @@ class Futbol extends Game {
 		if (element != null) {
 			element.paint(brush);
 			// Check for collision with striker
-			if (this.strikerCollision(striker, element)) {
+			if (this.playerCollision(striker, element)) {
 				// Move the ball forward
 				element.position.setX(element.position.getX() + 10); // Adjust speed as needed
 				element.rotate(5);
 			}
-			if (this.goalkeeperCollision(goalKeeper, element)) {
+			if (this.playerCollision(goalKeeper, element)) {
 				goalKeeper.score++;
 				element.position.setX(100);
 				striker.position.setX(75);
 			}
+
 			// Check for collision with the goal line (when the striker scores)
-			if (element.position.getX() > 900 && element.position.getY() > 250) {
+			if (element.position.getX() > 880) {
 				// Increment score when the striker scores a goal
-				element.counter++;
+				element.score++;
 
 				// Reset ball position
 				element.position.setX(100);
@@ -134,33 +143,50 @@ class Futbol extends Game {
 		}
 
 		// For goal keeper
-		goalKeeper.paint(brush);
-		goalKeeper.move();
-
+		if (goalKeeper != null) {
+			goalKeeper.paint(brush);
+			goalKeeper.move();
+		}
 		// repaint();
 
 		Font font = new Font("Arial", Font.BOLD, 28);
 		brush.setFont(font);
 
 		// Draw home and away scores
-		brush.setColor(Color.BLUE);
-		brush.drawString(String.valueOf(element.counter), 200, 30); // Home score on left
-		brush.setColor(Color.RED);
-		brush.drawString(String.valueOf(goalKeeper.score), width - 200, 30); // Away score on righ
+		if (element != null && goalKeeper != null) {
+			brush.setColor(Color.BLUE);
+			brush.drawString(String.valueOf(element.score), 200, 30); // Home score on left
+			brush.setColor(Color.RED);
+			brush.drawString(String.valueOf(goalKeeper.score), width - 200, 30); // Away score on right
+		}
 	}
 
+	/**
+	 * Handles the keyPressed event.
+	 * 
+	 * @param e The KeyEvent object representing the key press event.
+	 */
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_LEFT) {
 			striker.moveLeft();
-			; // Move striker left
 		} else if (key == KeyEvent.VK_RIGHT) {
 			striker.moveRight();
-			; // Move striker right
+		} else if (key == KeyEvent.VK_UP) {
+			striker.moveUp();
+		} else if (key == KeyEvent.VK_DOWN) {
+			striker.moveDown();
 		}
 	}
 
-	public boolean strikerCollision(Polygon object1, Polygon object2) {
+	/**
+	 * Checks for collision between two polygons.
+	 * 
+	 * @param object1 The first polygon.
+	 * @param object2 The second polygon.
+	 * @return True if collision is detected, false otherwise.
+	 */
+	public boolean playerCollision(Polygon object1, Polygon object2) {
 		// Get the points of each object
 		Point[] points1 = object1.getPoints();
 		Point[] points2 = object2.getPoints();
@@ -184,23 +210,12 @@ class Futbol extends Game {
 		return false;
 	}
 
-	public boolean goalkeeperCollision(Polygon object1, Polygon object2) {
-			// Get the points of the goalkeeper (object1) and the element (object2)
-			Point[] points1 = goalKeeper.getPoints();
-			Point[] points2 = element.getPoints();
-		
-			// Loop through each point in the element (object2)
-			for (Point point2 : points2) {
-				// Check if the point of the element is inside the goalkeeper
-				if (goalKeeper.contains(point2)) {
-					return true; // Collision detected
-				}
-			}
-		
-			// No collision detected
-			return false;
-	}
 
+	/**
+ 	* The main method of the program.
+ 	* 
+ 	* @param args Command-line arguments (not used).
+ 	*/
 	public static void main(String[] args) {
 		Futbol a = new Futbol();
 		a.setVisible(true);
