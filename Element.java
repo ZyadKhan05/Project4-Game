@@ -48,13 +48,12 @@ public class Element extends Polygon {
 	public void move() {
 		double amountToMove = this.position.getX();
 
-		if (amountToMove < 850 && amountToMove >= 0) {
+		if (amountToMove < 950 && amountToMove >= 0) {
 			this.position.setX(++amountToMove);
 			//counter++;
 		}
 
-		if (this.position.getX() >= 850) {
-			this.position.setX(100);
+		if (this.position.getX() >= 950) {
 			counter++;
 		}
 	}

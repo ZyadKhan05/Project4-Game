@@ -1,6 +1,6 @@
 
 /*
-CLASS: YourGameNameoids
+CLASS: Futbol
 DESCRIPTION: Extending Game, YourGameName is all in the paint method.
 NOTE: This class is the metaphorical "main method" of your program,
       it is your control center.
@@ -29,20 +29,18 @@ class Futbol extends Game {
 				new Point(0, 100)
 		};
 
-		Point elementPosition = new Point(150, 400); 
+		Point elementPosition = new Point(150, 400);
 		double elementRotation = 0;
 
 		Point[] strikerPoints = {
-			new Point(0, 0),
-			new Point(100, 0),
-			new Point(100, 100),
-			new Point(0, 100)
-	};
+				new Point(0, 0),
+				new Point(100, 0),
+				new Point(100, 100),
+				new Point(0, 100)
+		};
 
-
-
-		Point strikerPosition = new Point(100, 400); 
-		double strikerRotation = 0; 
+		Point strikerPosition = new Point(100, 400);
+		double strikerRotation = 0;
 
 		element = new Element(elementPoints, elementPosition, elementRotation);
 
@@ -91,14 +89,6 @@ class Futbol extends Game {
 			striker.paint(brush);
 		}
 
-		// sample code for printing message for debugging
-		// counter is incremented and this message printed
-		// each time the canvas is repainted
-		// counter++;
-		brush.setColor(Color.white);
-		brush.drawString("Score is " + element.counter,10,10);
-		
-
 		if (element != null) {
 			element.paint(brush);
 			// Check for collision with striker
@@ -108,11 +98,20 @@ class Futbol extends Game {
 				element.rotate(5);
 			}
 			if (this.goalkeeperCollision(goalKeeper, element)) {
-			 	// Move the ball forward
-			 	element.position.setX(100); 
+				goalKeeper.score++;
+				element.position.setX(100);
+				striker.position.setX(75);
+			}
+			// Check for collision with the goal line (when the striker scores)
+			if (element.position.getX() > 920 && element.position.getY() > 250) {
+				// Increment score when the striker scores a goal
+				element.counter++;
+
+				// Reset ball position
+				element.position.setX(100);
+				striker.position.setX(75);
 			}
 			// element.move(); // Call move
-			element.rotate(5); // Call rotate
 			repaint(); // Call repaint after modifications
 		}
 
@@ -139,6 +138,14 @@ class Futbol extends Game {
 		goalKeeper.move();
 
 		// repaint();
+
+		brush.setColor(Color.white);
+		Font font = new Font("Arial", Font.BOLD, 24);
+		brush.setFont(font);
+
+		// Draw home and away scores
+		brush.drawString(String.valueOf(element.counter), 200, 30); // Home score on left
+		brush.drawString(String.valueOf(goalKeeper.score), width - 200, 30); // Away score on righ
 	}
 
 	public void keyPressed(KeyEvent e) {

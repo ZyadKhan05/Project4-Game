@@ -37,11 +37,5 @@ public class GoalKeeper extends Polygon implements Player {
     brush.drawImage(image, (int) position.getX() - image.getWidth(null) / 2,
         (int) position.getY() - image.getHeight(null) / 2, null);
     this.move();
-
-    // Check for goal and update score
-    if (position.getX() > 950) { // Adjust x-coordinate based on field size
-      position.setX(100);
-      score++;
-  }
   }
 }
