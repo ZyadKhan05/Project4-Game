@@ -2,6 +2,11 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
+
+/**
+ * The Element represents the soccer ball element in the game.
+ * It extends Polygon 
+ */
 public class Element extends Polygon {
 	public Point[] points;
 	double rotation;

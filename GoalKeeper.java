@@ -1,6 +1,10 @@
 
 import java.awt.*;
 
+/**
+ * The Goalkeeper class represents a goalkeeper automated player in the game.
+ * It extends Polygon and implements the Player interface.
+ */
 public class GoalKeeper extends Polygon implements Player {
 
   static Image image;
