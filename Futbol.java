@@ -1,4 +1,3 @@
-
 /*
 CLASS: Futbol
 DESCRIPTION: Extending Game, YourGameName is all in the paint method.
@@ -18,8 +17,6 @@ class Futbol extends Game {
 	Element element;
 	Striker striker;
 	GoalKeeper goalKeeper;
-	HomeTeam strikerTeam;
-	AwayTeam goalKeeperTeam;
 
 	public Futbol() {
 		super("Futbol!", 1000, 800);
@@ -47,9 +44,6 @@ class Futbol extends Game {
 		// creating the goalkeeper
 		goalKeeper = new GoalKeeper(elementPoints, new Point(875, 300), 
 				elementRotation);
-
-		strikerTeam = new HomeTeam();
-		goalKeeperTeam = new AwayTeam();
 	}
 
 	/**
@@ -104,7 +98,7 @@ class Futbol extends Game {
 			}
 			// Check for collision with the goalkeeper
 			if (this.goalkeeperCollision(element, goalKeeper)) {
-				goalkeeperTeam.score++;
+				goalKeeper.score++;
 				brush.setColor(Color.RED);
 				brush.setFont(new Font("Arial", Font.BOLD, 20));
 				brush.drawString("NO GOOD!", 400, 300);
@@ -116,7 +110,7 @@ class Futbol extends Game {
 			// Check for collision with the goal line (when the striker scores)
 			if (element.position.getX() > 890) {
 				// Increment score when the striker scores a goal
-				strikerTeam.score++;
+				element.score++;
 				brush.setColor(Color.GREEN);
 				brush.setFont(new Font("Arial", Font.BOLD, 32));
 				brush.drawString("GOALLLL!", 400, 250);
@@ -142,8 +136,6 @@ class Futbol extends Game {
 		g2d.drawLine(800, 550, 1000, 550);
 		// brush.drawArc(800, 250, 800, 300, 90, 180);
 	
-
-		
 		if (striker != null) {
 			striker.paint(brush);
 		}
@@ -161,10 +153,10 @@ class Futbol extends Game {
 		if (element != null && goalKeeper != null) {
 			brush.setColor(Color.BLUE);
 			// Home score on left
-			brush.drawString(String.valueOf(strikerTeam.score), 200, 30); 
+			brush.drawString(String.valueOf(element.score), 200, 30); 
 			brush.setColor(Color.RED);
 			// Away score on right
-			brush.drawString(String.valueOf(goalKeeperTeam.score), width - 200, 30); 
+			brush.drawString(String.valueOf(goalKeeper.score), width - 200, 30); 
 		}
 	
 	}
@@ -242,47 +234,6 @@ class Futbol extends Game {
 		// No collision detected
 		return false;
 	}
-
-	/**
-	 * Inner class representing the Home Team.
-	 * <p>
-	 * This class encapsulates the properties and behavior of the Home Team in the game.
-	 * It stores the current score of the Home Team. Instances of this
-	 * class are used to manage and track the performance of the Home Team during the game.
-	 * </p>
-	 */
-	class HomeTeam {
-        int score;
-
-		  /**
-     * Constructs a new HomeTeam instance .
-     * Initializes the score to zero.
-     * 
-     */
-        public HomeTeam() {
-            this.score = 0;
-        }
-    }
-
-	/**
- 	* Inner class representing the Away Team.
- 	* <p>
- 	* This class encapsulates the properties and behavior of the Away Team in the game.
- 	* It stores current score of the Away Team. Instances of this
- 	* class are used to manage and track the performance of the Away Team during the game.
- 	* </p>
- 	*/
-	class AwayTeam {
-        int score;
-   		/**
-     	* Constructs a new AwayTeam instance with the specified team name.
-     	* Initializes the score to zero.
-    	*		 
-    	*/
-        public AwayTeam() {
-            this.score = 0;
-        }
-    }
 
 	/**
 	 * The main method of the program.
