@@ -33,18 +33,27 @@ public class Striker extends Polygon implements Player {
     this.position = position;
     image = Toolkit.getDefaultToolkit().getImage("striker.png");
 
-    keyListener = new KeyAdapter() {
+    // Anonymous class for key listener
+    addKeyListener(new KeyListener() {
       @Override
       public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        if (keyCode == KeyEvent.VK_LEFT) {
-          moveLeft();
-        } else if (keyCode == KeyEvent.VK_RIGHT) {
-          moveRight();
-        }
+          int keyCode = e.getKeyCode();
+          if (keyCode == KeyEvent.VK_LEFT) {
+              moveLeft();
+          } else if (keyCode == KeyEvent.VK_RIGHT) {
+              moveRight();
+          }
       }
-    };
-  }
+
+      @Override
+      public void keyReleased(KeyEvent e) {
+          // Handle key release events (optional)
+      }
+
+      @Override
+      public void keyTyped(KeyEvent e) {
+          // Handle key typing events (optional)
+      }
 
   // Implementation of the move() method required by the Player interface.
   // This method is intentionally left blank as it is not used in this class.
