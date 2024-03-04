@@ -33,6 +33,7 @@ public class Striker extends Polygon implements Player {
 		this.position = position;
 		image = Toolkit.getDefaultToolkit().getImage("striker.png");
 
+		// Anonymous Class for the key listener
 		keyListener = new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
