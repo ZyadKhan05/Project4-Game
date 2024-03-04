@@ -49,7 +49,7 @@ class Futbol extends Game {
 				elementRotation);
 
 		strikerTeam = new HomeTeam();
-		goalKeeper = new AwayTeam();
+		goalKeeperTeam = new AwayTeam();
 	}
 
 	/**
