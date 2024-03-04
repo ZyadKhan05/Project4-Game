@@ -19,7 +19,7 @@ class Futbol extends Game {
 	Striker striker;
 	GoalKeeper goalKeeper;
 	HomeTeam strikerTeam;
-	AwayTeam goalkeeperTeam;
+	AwayTeam goalKeeperTeam;
 
 	public Futbol() {
 		super("Futbol!", 1000, 800);
@@ -164,7 +164,7 @@ class Futbol extends Game {
 			brush.drawString(String.valueOf(strikerTeam.score), 200, 30); 
 			brush.setColor(Color.RED);
 			// Away score on right
-			brush.drawString(String.valueOf(goalkeeperTeam.score), width - 200, 30); 
+			brush.drawString(String.valueOf(goalKeeperTeam.score), width - 200, 30); 
 		}
 	
 	}
