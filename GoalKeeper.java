@@ -40,7 +40,7 @@ public class GoalKeeper extends Polygon implements Player {
             double amountToMove = position.getY();
 
             if (amountToMove < 530 && amountToMove >= 200) {
-                position.setY(amountToMove+20);
+                position.setY(amountToMove+5);
                 // counter++;
             }
 
